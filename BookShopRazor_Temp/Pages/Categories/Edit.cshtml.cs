@@ -9,7 +9,7 @@ namespace BookShopRazor_Temp.Pages.Categories
     {
         private readonly ApplicationDbContext _db;
         [BindProperty]
-        public Category? Category { get; set; }
+        public Category Category { get; set; }
         public EditModel(ApplicationDbContext db)
         {
             _db = db;
@@ -31,6 +31,7 @@ namespace BookShopRazor_Temp.Pages.Categories
             {
                 _db.Categories.Update(Category);
                 _db.SaveChanges();
+                TempData["success"] = Category.Name + " category updated successfully";
                 return (RedirectToPage("Index"));
             }
             return (Page());

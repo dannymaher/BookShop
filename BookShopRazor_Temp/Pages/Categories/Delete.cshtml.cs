@@ -27,9 +27,10 @@ namespace BookShopRazor_Temp.Pages.Categories
         public IActionResult OnPost() {
             if(Category != null)
             {
+                 
                 _db.Remove(Category);
                 _db.SaveChanges();
-
+                TempData["success"] = Category.Name + " category deleted successfully";
                 return (RedirectToPage("Index"));
             }
             return (NotFound());
