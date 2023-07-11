@@ -3,7 +3,7 @@
     <div class="card-header bg-secondary bg-gradient ml-0 py-3 ">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-white py-2">Category List</h2>
+                <h2 class="text-white py-2">Product List</h2>
             </div>
         </div>
 
@@ -13,8 +13,8 @@
             <div class="col-6">
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
-                    <i class="bi bi-plus-circle"></i> Create New Category
+                <a asp-area="Admin" asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Create New Product
                 </a>
             </div>
         </div>
@@ -23,28 +23,21 @@
             <thead>
                 <tr>
                     <th>
-                        Category Name
+                        Title
+                    </th>
+                    
+                    <th>
+                        ISBN
                     </th>
                     <th>
-                        Category Description
+                        Author
+                    </th>
+                   
+                    <th>
+                        Price
                     </th>
                     <th>
-                        Category ISBN
-                    </th>
-                    <th>
-                        Category Author
-                    </th>
-                    <th>
-                        Category ListPrice
-                    </th>
-                    <th>
-                        Category Price
-                    </th>
-                    <th>
-                        Category Price50
-                    </th>
-                    <th>
-                        Category Price100
+                        Category
                     </th>
                     <th>
 
@@ -56,16 +49,15 @@
                 {
                     <tr>
                         <td>@obj.Title</td>
-                        <td>@obj.Description</td>
+                        
                         <td>@obj.ISBN</td>
                         <td>@obj.Author</td>
                         <td>@obj.ListPrice</td>
-                        <td>@obj.Price</td>
-                        <td>@obj.Price50</td>
-                        <td>@obj.Price100</td>
+                        <td></td>
+                       
                         <td>
                             <div class="w-75 btn-group" role="group">
-                                <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-primary mx-2">
+                                <a asp-area="Admin" asp-controller="Product" asp-action="Upsert" asp-route-Id="@obj.Id" class="btn btn-primary mx-2">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </a>
                                 <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-danger mx-2">
