@@ -24,5 +24,7 @@ namespace BookShop.Models
         public string? PostalCode { get; set; }
         [DisplayName("Phone Number")]
         public string? PhoneNumber { get; set; }
+
+
     }
 }
