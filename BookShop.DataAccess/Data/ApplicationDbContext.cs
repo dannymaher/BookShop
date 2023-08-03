@@ -16,6 +16,8 @@ namespace BookShop.DataAccess.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Company> Companys { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); //needed for identityDb
@@ -24,6 +26,25 @@ namespace BookShop.DataAccess.Data
                 new Category { Id =1, Name = "Action", DisplayOrder = 1},
                 new Category { Id = 2, Name = "Sci-Fi", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "History", DisplayOrder = 3 }
+                );
+            modelBuilder.Entity<Company>().HasData(
+                new Company { Id = 1, Name = "Tech Solution", 
+                    StreetAddress = "123 Tech St",
+                    City= "Tech City",
+                    State = "TX",
+                    PhoneNumber="87878787878",
+                    PostalCode="TY66 UM7"
+                },
+                new Company
+                {
+                    Id = 2,
+                    Name = "Vivid Books",
+                    StreetAddress = "22 Book Av",
+                    City = "Booktown",
+                    State = "IL",
+                    PhoneNumber = "12345123452",
+                    PostalCode = "PO95 KG6"
+                }
                 );
             modelBuilder.Entity<Product>().HasData(
                     new Product
