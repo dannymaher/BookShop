@@ -26,14 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Areas\Customer\Views\Home\Details.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Areas\Customer\Views\Home\Details.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Areas\Customer\Views\Home\Details.cshtml" />
   </ItemGroup>
 
