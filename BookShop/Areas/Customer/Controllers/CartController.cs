@@ -126,7 +126,7 @@ namespace BookShop.Areas.Customer.Controllers
                 //Is a customer account and we need payment
                 //stripe logic
 
-                var domain = "https://localhost:7014/";
+                var domain = Request.Scheme + "://"+ Request.Host.Value +"/";
                 var options = new SessionCreateOptions
                 {
                     SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
