@@ -1,6 +1,8 @@
 ﻿using BookShop.DataAccess.Repository.IRepository;
 using BookShop.Models;
+using BookShop.Utility;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
@@ -21,6 +23,7 @@ namespace BookShop.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
+            
             IEnumerable<Product> productList = _unitOfWork.Product.GetAll(includeProperties:"Category");
             return View(productList);
         }
@@ -53,13 +56,16 @@ namespace BookShop.Areas.Customer.Controllers
             {
                 cartFromDb.Count += cart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
             }
             else
             {
                 _unitOfWork.ShoppingCart.Add(cart);
+                _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart, _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == UserId).Count());
             }
             TempData["success"] = "Cart updated successfully";
-            _unitOfWork.Save();
+            
             return(RedirectToAction(nameof(Index)));
         }
 

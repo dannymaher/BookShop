@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor IHttpContextAccessor
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -42,24 +44,29 @@
                                         <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
                                     </li>
 
-                                    <li><hr class="dropdown-divider"></li>
+                                    
                                     <li class="nav-item">
                                         <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Products</a>
                                     </li>
-                                    <li><hr class="dropdown-divider"></li>
+                                    
                                     <li class="nav-item">
                                         <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Companies</a>
                                     </li>
-
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register" >Create User</a>
+                                    </li>
                                 </ul>
                             </li>
-                        }
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                            <i class="bi bi-cart"></i> &ensp;   
-                            </a>
-                        </li>
+                        }                                              
                         
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Customer" asp-controller="Cart" asp-action="Index">
+                                    @await Component.InvokeAsync("ShoppingCart")
+                                </a>
+                            </li>
+                        
+
                     </ul>
                     <partial name ="_LoginPartial" />
                 </div>
