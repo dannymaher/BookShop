@@ -9,6 +9,6 @@ namespace BookShop.DataAccess.Repository.IRepository
 {
     public interface IApplicationUserRepository : IRepository<ApplicationUser>
     {
-        //void Update(ApplicationUser obj);
+        void Update(ApplicationUser obj);
     }
 }
