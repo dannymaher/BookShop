@@ -132,14 +132,21 @@ namespace BookShop.Areas.Admin.Controllers
             {
                 //user is currently locked and we need to unlock them
                 objFromDb.LockoutEnd = DateTime.Now;
+                _unitOfWork.ApplicationUser.Update(objFromDb);
+                _unitOfWork.Save();
+                return Json(new { success = true, message = "Unlock successful" });
+
             }
             else
             {
                 objFromDb.LockoutEnd = DateTime.Now.AddYears(1000);
+                _unitOfWork.ApplicationUser.Update(objFromDb);
+                _unitOfWork.Save();
+                return Json(new { success = true, message = "Lock successful" });
             }
-            //_unitOfWork.ApplicationUser.Update(objFromDb);
-            _unitOfWork.Save();
-            return Json(new { success = true, message = "Operation Successful" });
+            
+            
+            
         }
 
         #endregion
