@@ -15,6 +15,7 @@ namespace BookShop.DataAccess.Repository.IRepository
         IShoppingCartRepository ShoppingCart { get; }
         IOrderDetailRepository OrderDetail { get; }
         IOrderHeaderRepository OrderHeader { get; }
+        IProductImageRepository ProductImage { get; }
         void Save();
     }
 }

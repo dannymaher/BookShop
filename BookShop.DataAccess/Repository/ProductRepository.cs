@@ -32,10 +32,7 @@ namespace BookShop.DataAccess.Repository
                 productFromDb.Description = product.Description;
                 productFromDb.Author = product.Author;
                 productFromDb.CategoryId = product.CategoryId;
-                if(product.ImageUrl != null )
-                {
-                    productFromDb.ImageUrl = product.ImageUrl;
-                }
+                productFromDb.ProductImages = product.ProductImages;
                 
             }
         }
